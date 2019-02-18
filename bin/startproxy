@@ -1,0 +1,5 @@
+#!/bin/bash
+# https://github.com/snail007/goproxy
+# proxy 客户端脚本，其中proxy.crt和proxy.key文件要和server端一样，server端ip根据实际情况修改
+# 访问本地localhost:8080即访问server的172.105.220.251:9999
+proxy http -t tcp -p ":8080" -T tls -C proxy.crt -K proxy.key -P "172.105.220.251:9999"

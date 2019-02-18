@@ -1,0 +1,48 @@
+#https://github.com/hwdsl2/setup-ipsec-vpn
+#vpn客户端，在linux下一行行执行下面语句
+
+
+#root下执行
+sudo su
+
+#创建 xl2tpd 控制文件
+mkdir -p /var/run/xl2tpd
+touch /var/run/xl2tpd/l2tp-control
+
+#重启服务：
+service strongswan restart
+service xl2tpd restart
+
+#开始 IPsec 连接
+ipsec up myvpn
+
+#开始 L2TP 连接
+echo "c myvpn" > /var/run/xl2tpd/l2tp-control
+
+#检查现在的默认路由,在输出中查找以下行： default via X.X.X.X ...。记下这个网关 IP，并且在下面的两个命令中使用。
+ip route
+
+#从新的默认路由中排除你的 VPN 服务器 IP （替换为你自己的值）,route add 你的VPN服务器IP gw X.X.X.X
+route add 172.105.220.251 gw 192.168.1.1
+
+#添加一个新的默认路由，并且开始通过 VPN 服务器发送数据：
+route add default dev ppp0
+
+#检查 VPN 是否正常工作,正常会返回 你的 VPN 服务器 IP
+wget -qO- http://ipv4.icanhazip.com; echo
+
+
+
+############################################################################
+#要停止通过 VPN 服务器发送数据，删除默认路由ppp0：
+route del default dev ppp0
+
+
+#要断开连接
+# Ubuntu & Debian
+echo "d myvpn" > /var/run/xl2tpd/l2tp-control
+ipsec down myvpn
+
+# CentOS/RHEL & Fedora
+echo "d myvpn" > /var/run/xl2tpd/l2tp-control
+strongswan down myvpn
