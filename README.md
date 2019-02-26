@@ -2,39 +2,51 @@
 
 ### docker
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker.sh?token=APUrBkjYLz_n6dKuL9xj2SMXzsjF0CrEks5cap3dwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker.sh | bash
 ```
 
 ### mongodb
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongodb.sh?token=APUrBk5_5XOtQQUZPN1UxCTjTDyU5zWiks5cap5PwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongodb.sh | bash
 ```
 ### mysql
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh?token=APUrBgGubKaClu6fCyvA8OhdXoUNY7qlks5cap6HwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh | bash
 ```
 
 ### nginx
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx.sh?token=APUrBnoizXIak4gNG90gE6uBzuykIUy7ks5cap6hwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx.sh | bash
 ```
 
 ### nodejs
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh?token=APUrBtlIeV0E7lesGXyxs__iFV5LvW2zks5cap7EwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh | bash
 ```
 
 ### redis
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis.sh?token=APUrBnhc4CJGTLEvSLu4JS-f6R3ROZkCks5cap7dwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis.sh | bash
 ```
 
 ### sshkey
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/sshkey.sh?token=APUrBrcnFwnvxHS8Us3WFODMWxJC-0YPks5cap7-wA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/sshkey.sh | bash
 ```
 
 ### zsh_autosuggestions
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh?token=APUrBhBlg9RGpD7Y6QQUh99U5582yk2Xks5cap9BwA%3D%3D | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh | bash
+```
+
+### cachecloud
+```
+DB_URL=127.0.0.1 \
+&& DB_PORT=3306 \
+&& DB_NAME=cachecloud \
+&& DB_USER=root \
+&& DB_PASSWORD=123456789 \
+&& WEB_PORT=8585 \
+&& curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/cachecloud.sh | bash
+
 ```

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 cd /opt/  \
 && git clone https://github.com/sohutv/cachecloud \
 && DB_URL=${DB_URL=127.0.0.1} \
