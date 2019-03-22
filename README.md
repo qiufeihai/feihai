@@ -1,5 +1,10 @@
 ## install
 
+### init
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/init.sh | bash
+```
+
 ### docker
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker.sh | bash
@@ -50,3 +55,4 @@ DB_URL=127.0.0.1 \
 && curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/cachecloud.sh | bash
 
 ```
+
