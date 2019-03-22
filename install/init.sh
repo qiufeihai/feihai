@@ -5,6 +5,11 @@ log() {
   echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
 }
 
+if ! type -p sudo &>/dev/null; then
+    log 安装sudo
+    sudo yum install -y sudo
+fi
+
 log 安装epel源
 sudo yum install epel-release
 
