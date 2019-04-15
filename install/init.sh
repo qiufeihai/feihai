@@ -11,7 +11,7 @@ if ! type -p sudo &>/dev/null; then
 fi
 
 log 安装epel源
-sudo yum install epel-release
+sudo yum install -y epel-release
 
 log 安装基础工具
 sudo yum groups install -y "Minimal Install" 
