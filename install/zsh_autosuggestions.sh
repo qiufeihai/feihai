@@ -2,10 +2,10 @@
 log () {
   echo "------------------- $@ ----------------------"
 }
-which zsh > /dev/null
-if [ $? -eq 1 ]; then
-log "install zsh"
-yum install -y zsh
+
+if ! type -p zsh &>/dev/null; then
+    log 安装zsh
+    sudo yum install -y zsh
 fi
 
 log "install zsh-autosuggestions"
@@ -15,7 +15,10 @@ cat >> ~/.zshrc << EOF
 source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 EOF
 
-log "zsh as default shell"
-chsh -s `which zsh`
+
+if type -p zsh &>/dev/null; then
+    log "zsh as default shell"
+    chsh -s `which zsh`
+fi
 
 log "安装完成，把~/.bashrc中有用的配置复制到~/.zshrc并重新启动shell"

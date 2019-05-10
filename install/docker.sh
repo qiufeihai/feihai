@@ -29,7 +29,7 @@ sudo yum-config-manager \
     https://download.docker.com/linux/centos/docker-ce.repo
 
 log 安装docker
-sudo yum install docker-ce
+sudo yum install -y docker-ce
 
 log 开启服务
 sudo systemctl enable docker
