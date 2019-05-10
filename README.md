@@ -33,6 +33,10 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis.sh | bash
 ```
+### redis   yum安装，启动服务
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
+```
 
 ### sshkey
 ```
