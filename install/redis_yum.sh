@@ -10,7 +10,7 @@ sudo yum install -y http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 sudo yum-config-manager --enable remi
 
 log 安装redis
-sudo yum install redis
+sudo yum install -y redis
 
 log systemctl 启动和开机启动
 sudo systemctl start redis
