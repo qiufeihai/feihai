@@ -60,3 +60,12 @@ DB_URL=127.0.0.1 \
 
 ```
 
+### dsvpn
+```
+// server
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn_server.sh | bash
+
+// client
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn_client.sh | bash
+
+```

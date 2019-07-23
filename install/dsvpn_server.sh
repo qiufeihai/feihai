@@ -16,7 +16,7 @@ ln -s $PWD/dsvpn /usr/local/bin
 
 mkdir -p /etc/dsvpn/
 cat > /etc/dsvpn/vpn.key << EOF
-iysrecwznViROoQM
+É<8b>úç<8e>Ìbæ^Z«å±ü×l5ýòª|?;^D.áu<9b>Ys<9b>Q8
 EOF
 
 cat > /etc/systemd/system/dsvpn.service << EOF
@@ -33,5 +33,5 @@ WantedBy=network.target
 EOF
 
 log 安装完成
-log 密钥文件vim /etc/dsvpn/vpn.key
+log 密钥文件 vim /etc/dsvpn/vpn.key
 log vim /etc/systemd/system/dsvpn.service 修改参数
