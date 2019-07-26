@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # author: feihai
-# install mongodb4.0
+# install nginx
 
 log() {
   echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"

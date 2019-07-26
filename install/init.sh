@@ -20,6 +20,12 @@ sudo yum groups install -y "Chinese Support"
 sudo yum groups install -y "fonts" 
 sudo yum install -y "net-tools"
 
+log 安装常用工具
+sudo yum install -y tmux
+sudo yum install -y htop
+sudo yum install -y ncdu
+sudo yum install -y telnet
+
 if ! type -p vim &>/dev/null; then
     log 安装vim
     sudo yum install -y vim
