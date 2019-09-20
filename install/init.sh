@@ -19,6 +19,8 @@ sudo yum groups install -y "Development Tools"
 sudo yum groups install -y "Chinese Support" 
 sudo yum groups install -y "fonts" 
 sudo yum install -y "net-tools"
+sudo yum install -y wget
+sudo yum install -y iproute
 
 log 安装常用工具
 sudo yum install -y tmux
