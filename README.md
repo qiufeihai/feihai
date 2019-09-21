@@ -69,3 +69,9 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn_client.sh | bash
 
 ```
+
+### n2n
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/n2n.sh | bash
+```
+
