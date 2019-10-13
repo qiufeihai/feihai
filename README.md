@@ -5,6 +5,13 @@
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/init.sh | bash
 ```
 
+### bbr,选择bbrplus
+```
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
+chmod +x tcp.sh
+./tcp.sh
+```
+
 ### docker
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker.sh | bash
@@ -75,3 +82,8 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/n2n.sh | bash
 ```
 
+### docker vm 
+```
+docker run -d -p 2222:22 --name vm1 ilemonrain/centos-sshd  
+用户名：root 密码：centos
+```
