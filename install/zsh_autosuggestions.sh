@@ -18,7 +18,7 @@ EOF
 
 if type -p zsh &>/dev/null; then
     log "zsh as default shell"
-    chsh -s `which zsh`
+    chsh -s `grep zsh /etc/shells`
 fi
 
 log "安装完成，把~/.bashrc中有用的配置复制到~/.zshrc并重新启动shell"
