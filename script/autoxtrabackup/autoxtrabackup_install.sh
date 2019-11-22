@@ -18,11 +18,11 @@ fi
 
 log 下载命令
 curl -L https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.sh -o autoxtrabackup &&
-sudo chmod +x autoxtrabackup && sudo cp autoxtrabackup /usr/local/bin/autoxtrabackup
+sudo chmod +x autoxtrabackup && sudo mv autoxtrabackup /usr/local/bin/autoxtrabackup
 
 log 下载配置文件
 curl -L https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.config -o autoxtrabackup &&
-sudo cp autoxtrabackup /etc/default/autoxtrabackup
+sudo mv autoxtrabackup /etc/default/autoxtrabackup
 
 log 命令路径/usr/local/bin/autoxtrabackup
 log 配置文件路径/etc/default/autoxtrabackup
