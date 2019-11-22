@@ -88,6 +88,11 @@ docker run -d -p 2222:22 --name vm1 ilemonrain/centos-sshd
 用户名：root 密码：centos
 ```
 
+### ffmpeg
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/ffmpeg.sh | bash
+```
+
 ### xtrabackup
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/xtrabackup.sh | bash
