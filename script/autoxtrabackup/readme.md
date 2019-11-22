@@ -1,4 +1,10 @@
-例子
+安装
+---------
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
+```
+
+备份
 ---------
 每小时创建增量备份，每24小时创建一次完整备份。保留时间设置为1周。
   - 将“ hoursBeforeFull”设置为24  
@@ -15,3 +21,9 @@
   - 将“ hoursBeforeFull”设置为1
   - 将“ keepDays”设置为7
   - 添加一个cronjob "0 23 * * * /usr/local/bin/autoxtrabackup"
+
+
+全量备份恢复
+---------
+innobackupex --decompress $backupDir/BACKUP-DIR
+增量备份恢复的具体看autoxtrabackup -h
