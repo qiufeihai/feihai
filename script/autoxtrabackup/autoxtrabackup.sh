@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# MySQL backup script
-# https://github.com/gstorme/autoxtrabackup
+# MySQL backup script 
+# fork from https://github.com/gstorme/autoxtrabackup
 # Copyright (c) 2014 Gregory Storme
 # Version: 0.2
 
@@ -24,6 +24,30 @@ fi
 #####
 # No editing should be required below this line
 #####
+
+usage_zh () {
+        echo -e "\t恢复全量备份";
+        echo -e "\t\t恢复压缩过的全量备份:";
+        echo -e "\t\t\tinnobackupex --decompress $backupDir/BACKUP-DIR";
+        echo -e "\t\t\tFollow same steps as for non-compressed backups";
+        echo -e "\t\t恢复未被压缩过的全量备份:";
+        echo -e "\t\t\tinnobackupex --apply-log $backupDir/BACKUP-DIR";
+        echo -e "\t\t\t停止 MySQL 服务";
+        echo -e "\t\t\t清空 MySQL 数据目录 (通常是 /var/lib/mysql)";
+        echo -e "\t\t\tinnobackupex --copy-back $backupDir/BACKUP-DIR";
+        echo -e "\t\t\t恢复 数据目录 权限 (chown -R mysql:mysql /var/lib/mysql/)";
+        echo -e "\t\t\t启动 MySQL 服务";
+        echo -e "\t恢复增量备份";
+        echo -e "\t\t\t如果被压缩过, 先解压备份 (see above)";
+        echo -e "\t\t\t首先, 准备基础备份，即初始的全量备份";
+        echo -e "\t\t\tinnobackupex --apply-log --redo-only $backupDir/FULL-BACKUP-DIR";
+        echo -e "\t\t\t合并增量备份到该基础全量备份.";
+        echo -e "\t\t\t如果你有多个增量备份, 通过 --redo-only 按照增量备份的生成顺序来合并成最终的全量备份";
+        echo -e "\t\t\tinnobackupex --apply-log --redo-only $backupDir/FULL-BACKUP-DIR --incremental-dir=$backupDir/INC-BACKUP-DIR";
+        echo -e "\t\t\t一旦你合并完所有增量备份，就可以使它回滚为一个未提交的事务:";
+        echo -e "\t\t\tinnobackupex --apply-log $backupDir/BACKUP-DIR";
+        echo -e "\t\t\t现在合并成了一个全量备份文件，然后执行上面的全量备份恢复的命令即可";
+}
 
 usage () {
         echo -e "\tRestore a full backup";
@@ -52,7 +76,7 @@ usage () {
 while getopts ":h" opt; do
   case $opt in
         h)
-                usage;
+                usage_zh;
                 exit 0
                 ;;
         \?)
