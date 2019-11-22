@@ -10,7 +10,7 @@ log() {
 
 if ! type -p xtrabackup &>/dev/null; then
 log 安装xtrabackup
-yum install -y https://repo.percona.com/yum/percona-release-latest.noarch.rpm
+yum install -y https://www.percona.com/redir/downloads/percona-release/redhat/percona-release-1.0-13.noarch.rpm
 fi
 
 xtrabackup -v
