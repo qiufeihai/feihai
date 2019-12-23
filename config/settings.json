@@ -1,0 +1,109 @@
+{
+  // VsCode配置文件，将设置放入此文件中以覆盖默认设置
+  "editor.tabSize": 2,
+  "editor.formatOnSave": false,
+  "files.associations": {
+    "*.vue": "html"
+  },
+  "workbench.sideBar.location": "left",
+  "window.menuBarVisibility": "default",
+  "sync.gist": "",
+  "sync.lastUpload": "",
+  "sync.autoDownload": false,
+  "sync.autoUpload": false,
+  "sync.lastDownload": "",
+  "sync.version": 261,
+  "sync.showSummary": true,
+  "sync.forceDownload": false,
+  "sync.anonymousGist": false,
+  "sync.host": "",
+  "sync.pathPrefix": "",
+  "workbench.colorTheme": "Monokai",
+  // tslint
+  "tslint.enable": true,
+  "tslint.autoFixOnSave": true,
+  "files.autoSave": "on",
+  // 关闭js验证，用standard验证
+  "javascript.validate.enable": false,
+  // standar snippet
+  "editor.snippetSuggestions": "top",
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "element-helper.version": "2.5",
+  // vim
+  "vim.easymotion": true,
+  "vim.sneak": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": false,
+  "vim.hlsearch": true,
+  "vim.surround": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "after": [],
+      "commands": [
+        {
+          "command": ":nohl"
+        }
+      ]
+    }
+  ],
+  "vim.leader": " ",
+  "vim.handleKeys": {
+    "<C-r>": true
+  },
+  "vim.disableAnnoyingNeovimMessage": true,
+  // mocha
+  "mocha-snippets.semicolon": true,
+  // prettier
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 300,
+  "prettier.bracketSpacing": true,
+  "[javascript]": {
+    "editor.formatOnSave": false,
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+
+  // 解决cpu过高
+  "search.followSymlinks": false,
+  "vim.disableExtension": false,
+  "terminal.integrated.shell.windows": "C:\\WINDOWS\\System32\\wsl.exe",
+  "editor.tabCompletion": "on",
+  "svn.path": "/usr/bin/svn",
+  "svn.enabled": false,
+  "window.zoomLevel": 0,
+  "search.exclude": {
+    "**/node_modules": false,
+    "**/bower_components": true
+  },
+
+  // ansible
+  "files.associations": {
+    "**/*.yml": "ansible"
+},
+
+"vetur.format.defaultFormatter.html": "prettyhtml",
+"vetur.format.defaultFormatter.css": "prettier",
+"vetur.format.defaultFormatter.postcss": "prettier",
+"vetur.format.defaultFormatter.scss": "prettier",
+"vetur.format.defaultFormatter.less": "prettier",
+"vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+"vetur.format.defaultFormatter.js": "prettier",
+"vetur.format.defaultFormatter.ts": "prettier",
+"[vue]": {
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+},
+}
