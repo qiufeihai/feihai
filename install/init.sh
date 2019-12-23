@@ -13,6 +13,9 @@ fi
 log 安装epel源
 sudo yum install -y epel-release
 
+log 设置上海时区
+timedatectl set-timezone "Asia/Shanghai"
+
 log 安装基础工具
 sudo yum groups install -y "Minimal Install" 
 sudo yum groups install -y "Development Tools" 
