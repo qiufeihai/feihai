@@ -39,6 +39,8 @@ fi
 if ! type -p ansible &>/dev/null; then
     log 安装ansible
     sudo yum install -y ansible
+    sudo yum install -y python-argcomplete
+    sudo activate-global-python-argcomplete
 fi
 
 if ! type -p zsh &>/dev/null; then
