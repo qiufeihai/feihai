@@ -17,7 +17,7 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxt
   - 在周日的所需时间创建第一个备份，以23h为例
   - 添加一个cronjob"0 23 * * * /usr/local/bin/autoxtrabackup"
 
-不要创建增量备份。每天23小时创建一个完整备份，保留时间设置为1周。
+不要创建增量备份。每天23小时创建一个完整备份，保留时间设置为1周。（默认）
   - 将“ hoursBeforeFull”设置为1
   - 将“ keepDays”设置为7
   - 添加一个cronjob "0 23 * * * /usr/local/bin/autoxtrabackup"
@@ -27,3 +27,9 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxt
 ---------
 innobackupex --decompress $backupDir/BACKUP-DIR
 增量备份恢复的具体看autoxtrabackup -h
+
+各个配置路径
+---------
+命令路径/usr/local/bin/autoxtrabackup
+配置文件路径/etc/default/autoxtrabackup
+定时任务配置/etc/cron.d/mysql_backup

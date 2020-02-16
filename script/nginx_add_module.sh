@@ -14,6 +14,9 @@ if ! type -p nginx &>/dev/null; then
   exit 0
 fi
 
+log 安装 pcre-devel openssl openssl-devel
+yum -y install pcre-devel openssl openssl-devel
+
 dir=/tmp/nginx
 mkdir -p $dir
 cd $dir

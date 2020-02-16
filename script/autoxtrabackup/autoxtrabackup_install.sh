@@ -24,5 +24,13 @@ log 下载配置文件
 curl -L https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.config -o autoxtrabackup &&
 sudo mv autoxtrabackup /etc/default/autoxtrabackup
 
+cat > /etc/cron.d/mysql_backup << EOF
+SHELL=/bin/bash
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/local/bin
+MAILTO=root
+0 23 * * * root /usr/local/bin/autoxtrabackup
+EOF
+
 log 命令路径/usr/local/bin/autoxtrabackup
 log 配置文件路径/etc/default/autoxtrabackup
+log 定时任务配置/etc/cron.d/mysql_backup
