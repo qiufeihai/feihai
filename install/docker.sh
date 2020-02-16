@@ -31,9 +31,15 @@ sudo yum-config-manager \
 log 安装docker
 sudo yum install -y docker-ce
 
-log 开启服务
+log 安装docker-compose 1.25.3
+sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
+log 开启docker服务
 sudo systemctl enable docker
 sudo systemctl start docker
+
+
 
 cat << EOF
 若开启不了服务，那可以通过设置DOCKER_HOST指向远端的docker服务：
