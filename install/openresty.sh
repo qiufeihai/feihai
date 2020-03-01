@@ -4,6 +4,7 @@
 # 目录对比nginx -->  openresty
 # home: /etc/nginx  -->  /usr/local/openresty/nginx
 # html: /usr/share/nginx/html  -->  /usr/local/openresty/nginx/html
+# logs: /var/log/nginx  -->  /usr/local/openresty/nginx/logs
 log() {
   echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
 }
