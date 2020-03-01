@@ -24,5 +24,4 @@ log 启动服务，开机自启动
 systemctl start openresty
 systemctl enable openresty
 
-
-
+log 请手动添加：include /usr/local/openresty/nginx/conf/conf.d/*.conf; 到http块
