@@ -15,7 +15,8 @@ if ! type -p nginx &>/dev/null; then
 fi
 
 log 安装 pcre-devel openssl openssl-devel
-yum -y install pcre-devel openssl openssl-devel
+sudo yum -y install pcre-devel openssl openssl-devel
+sudo yum groups install -y "Development Tools" 
 
 dir=/tmp/nginx
 mkdir -p $dir
