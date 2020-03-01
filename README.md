@@ -31,6 +31,11 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx.sh | bash
 ```
 
+### openresty
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/openresty.sh | bash
+```
+
 ### nodejs
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh | bash
