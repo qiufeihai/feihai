@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 # init linux 
+[[ `id -u` -ne 0 ]] && {
+    echo "Please run as root"; 
+    exit 1;
+}
 
 log() {
   echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
@@ -7,7 +11,7 @@ log() {
 
 if ! type -p sudo &>/dev/null; then
     log 安装sudo
-    sudo yum install -y sudo
+    yum install -y sudo
 fi
 
 log 安装epel源
@@ -22,6 +26,7 @@ sudo yum groups install -y "Development Tools"
 sudo yum groups install -y "Chinese Support" 
 sudo yum groups install -y "fonts" 
 sudo yum install -y "net-tools"
+sodu yum install -y bash-completion
 sudo yum install -y wget
 sudo yum install -y iproute
 sudo yum install -y lrzsz
