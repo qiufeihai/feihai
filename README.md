@@ -5,11 +5,17 @@
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/init.sh | bash
 ```
 
-### bbr,选择bbrplus
+### 自定义终端[username@hostname(ip)]pwd#
 ```
-wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
-chmod +x tcp.sh
-./tcp.sh
+# zsh
+grep 'export PS1' -q ~/.zshrc || echo 'export PS1="[%n@%m(`curl ifconfig.me 2>/dev/null`)]%~%# "' >> ~/.zshrc
+# bash
+grep 'export PS1' -q ~/.bashrc || echo 'export PS1="[\u@\h(`curl ifconfig.me 2>/dev/null`) \W]\\$ "' >> ~/.bashrc
+```
+
+### zsh_autosuggestions
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh | bash
 ```
 
 ### docker
@@ -21,6 +27,7 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docke
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongodb.sh | bash
 ```
+
 ### mysql
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh | bash
@@ -45,19 +52,20 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis.sh | bash
 ```
+
 ### redis   yum安装，启动服务
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
 ```
 
+### java
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/java.sh | bash
+```
+
 ### sshkey
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/sshkey.sh | bash
-```
-
-### zsh_autosuggestions
-```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh | bash
 ```
 
 ### cachecloud
@@ -101,4 +109,11 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/ffmpe
 ### xtrabackup
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/xtrabackup.sh | bash
+```
+
+### bbr,选择bbrplus
+```
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
+chmod +x tcp.sh
+./tcp.sh
 ```
