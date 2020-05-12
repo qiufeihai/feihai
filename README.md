@@ -10,7 +10,7 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/init.
 # zsh
 grep 'export PS1' -q ~/.zshrc || echo 'export PS1="[%n@%m(`curl ifconfig.me 2>/dev/null`)]%~%# "' >> ~/.zshrc
 # bash
-grep 'export PS1' -q ~/.bashrc || echo 'export PS1="[\u@\h(`curl ifconfig.me 2>/dev/null`) \W]\\$ "' >> ~/.bashrc
+grep 'export PS1' -q ~/.bashrc || echo 'export PS1="[\\u@\h(`curl ifconfig.me 2>/dev/null`) \W]\\$ "' >> ~/.bashrc
 ```
 
 ### zsh_autosuggestions
