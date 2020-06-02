@@ -63,6 +63,11 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/java.sh | bash
 ```
 
+### pyenv (python 版本管理)
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/pyenv.sh | bash
+```
+
 ### sshkey
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/sshkey.sh | bash
