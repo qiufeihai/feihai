@@ -20,9 +20,25 @@ install_pyenv() {
     yum install -y compat-openssl10-devel --allowerasing
 
     log 安装pyenv
-    curl https://pyenv.run | bash
+    curl https://pyenv.run | bash && sleep 3 && load_pyenv
   } || {
     log 已存在pyenv
+    load_pyenv
+  }
+}
+
+load_pyenv() {
+  [[ $SHELL =~ zsh ]] && {
+    SHELL_RC=~/.zshrc
+  } || {
+    SHELL_RC=~/.bashrc
+  }
+  grep -q pyenv $SHELL_RC || {
+cat >> $SHELL_RC <<-EOF
+  export PATH="/root/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  eval "$(pyenv virtualenv-init -)"
+EOF
   }
 }
 
