@@ -68,11 +68,6 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/java.
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/pyenv.sh | bash
 ```
 
-### sshkey
-```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/sshkey.sh | bash
-```
-
 ### cachecloud
 ```
 DB_URL=127.0.0.1 \
