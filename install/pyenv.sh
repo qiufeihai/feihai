@@ -50,4 +50,13 @@ install_pyenv_virtualenv() {
   log 安装pyenv-virtualenv
 }
 
-install_pyenv && install_pyenv_virtualenv
+install_pipenv() {
+  [ ! type -p pipenv &>/dev/null ] && {
+    log 安装pipenv
+    pip install pipenv
+  } || {
+    log 已存在pipenv
+  }
+}
+
+install_pyenv && install_pyenv_virtualenv && install_pipenv
