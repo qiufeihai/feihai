@@ -12,14 +12,18 @@ log() {
 }
 
 install_pyenv() {
-  log 下载依赖
-  yum install -y @development zlib-devel bzip2 bzip2-devel readline-devel sqlite \
-  sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
+  [ ! type -p pyenv &>/dev/null ] && {
+    log 下载依赖
+    yum install -y @development zlib-devel bzip2 bzip2-devel readline-devel sqlite \
+    sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
 
-  yum install -y compat-openssl10-devel --allowerasing
+    yum install -y compat-openssl10-devel --allowerasing
 
-  log 安装pyenv
-  curl https://pyenv.run | bash
+    log 安装pyenv
+    curl https://pyenv.run | bash
+  } || {
+    log 已存在pyenv
+  }
 }
 
 install_pyenv_virtualenv() {
@@ -28,7 +32,6 @@ install_pyenv_virtualenv() {
     exit 1;
   fi
   log 安装pyenv-virtualenv
-  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 }
 
 install_pyenv && install_pyenv_virtualenv
