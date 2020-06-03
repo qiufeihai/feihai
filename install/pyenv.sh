@@ -12,7 +12,6 @@ log() {
 }
 
 install_pyenv() {
-  [ ! type -p pyenv &>/dev/null ] && {
     log 下载依赖
     yum install -y @development zlib-devel bzip2 bzip2-devel readline-devel sqlite \
     sqlite-devel openssl-devel xz xz-devel libffi-devel findutils
@@ -21,9 +20,6 @@ install_pyenv() {
 
     log 安装pyenv
     curl https://pyenv.run | bash
-  } || {
-    log 已存在pyenv
-  }
 }
 
 load_pyenv() {
