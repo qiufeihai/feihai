@@ -20,34 +20,40 @@ install_pyenv() {
     yum install -y compat-openssl10-devel --allowerasing
 
     log 安装pyenv
-    curl https://pyenv.run | bash && sleep 3 && load_pyenv
+    curl https://pyenv.run | bash
   } || {
     log 已存在pyenv
-    load_pyenv
   }
 }
 
 load_pyenv() {
-  [[ $SHELL =~ zsh ]] && {
-    SHELL_RC=~/.zshrc
+  [ ! type -p pyenv &>/dev/null ] && {
+    log 请先安装pyenv
   } || {
-    SHELL_RC=~/.bashrc
-  }
-  grep -q pyenv $SHELL_RC || {
-cat >> $SHELL_RC <<-EOF
-  export PATH="/root/.pyenv/bin:$PATH"
-  eval "$(pyenv init -)"
-  eval "$(pyenv virtualenv-init -)"
+    [[ $SHELL =~ zsh ]] && {
+      SHELL_RC=~/.zshrc
+    } || {
+      SHELL_RC=~/.bashrc
+    }
+    log 加载pyenv配置
+    grep -q pyenv $SHELL_RC || {
+      cat >> $SHELL_RC <<-EOF
+        export PATH="/root/.pyenv/bin:$PATH"
+        eval "$(pyenv init -)"
+        eval "$(pyenv virtualenv-init -)"
 EOF
+    }
   }
+
 }
 
 install_pyenv_virtualenv() {
   if ! type -p pyenv &>/dev/null; then
     log 请先安装pyenv
-    exit 1;
+    return 1;
   fi
   log 安装pyenv-virtualenv
+  git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
 }
 
 install_pipenv() {
@@ -59,4 +65,32 @@ install_pipenv() {
   }
 }
 
-install_pyenv && install_pyenv_virtualenv && install_pipenv
+PS3='请选择命令: '
+options=(
+  "安装pyenv"
+  "加载pyenv配置"
+  "安装pyenv-virtualenv"
+  "安装pipenv"
+  "退出"
+)
+select opt in "${options[@]}"
+do
+    case $opt in
+        "安装pyenv")
+        install_pyenv
+            ;;
+        "加载pyenv配置")
+        load_pyenv
+            ;;
+        "安装pyenv-virtualenv")
+        install_pyenv_virtualenv
+            ;;
+        "安装pipenv")
+        install_pipenv
+            ;;
+        "退出")
+            break
+            ;;
+        *) echo "invalid option $REPLY";;
+    esac
+done
