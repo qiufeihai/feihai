@@ -65,7 +65,7 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/java.
 
 ### pyenv (python 版本管理)
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/pyenv.sh | bash
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/pyenv.sh)
 ```
 
 ### cachecloud
