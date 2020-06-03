@@ -33,7 +33,7 @@ load_pyenv() {
     }
     log 加载pyenv配置
     grep -q pyenv $SHELL_RC || {
-      cat >> $SHELL_RC <<-EOF
+      cat >> $SHELL_RC <<EOF
         export PATH="/root/.pyenv/bin:$PATH"
         eval "$(pyenv init -)"
         eval "$(pyenv virtualenv-init -)"
@@ -53,12 +53,8 @@ install_pyenv_virtualenv() {
 }
 
 install_pipenv() {
-  [ ! type -p pipenv &>/dev/null ] && {
     log 安装pipenv
     pip install pipenv
-  } || {
-    log 已存在pipenv
-  }
 }
 
 PS3='请选择命令: '
