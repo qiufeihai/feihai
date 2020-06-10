@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # init linux 
 [[ `id -u` -ne 0 ]] && {
-    echo "Please run as root"; 
+    echo "Please run as root" >&2
     exit 1;
 }
 
