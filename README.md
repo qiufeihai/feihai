@@ -33,6 +33,16 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongo
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh | bash
 ```
 
+### docker mysql
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mysql.sh)
+```
+
+### docker rabbit
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_rabbit.sh)
+```
+
 ### nginx
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx.sh | bash
