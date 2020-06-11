@@ -68,8 +68,8 @@ add_cmd_arg_yn_prompt() {
 }
 
 add_cmd_arg "docker run -d --restart always"
+add_cmd_arg_prompt "请输入容器名称" "--name {{rabbit}}" 
 add_cmd_arg_prompt "请输入hostname" "--hostname {{hostname}}" 
-add_cmd_arg_prompt "请输入容器名称" "--hostname {{rabbit}}" 
 add_cmd_arg_prompt "请输入cookie" "-e RABBITMQ_ERLANG_COOKIE={{cookie}}" 
 add_cmd_arg_prompt "请输入挂在目录" "-v {{/mnt/rabbit}}:/var/lib/rabbitmq" 
 add_cmd_arg_prompt "请输入web端口" "-p {{15672}}:15672" 
