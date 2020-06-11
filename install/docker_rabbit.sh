@@ -25,9 +25,9 @@ cmd_str=""
 add_cmd_arg() {
   # add_cmd_arg "args"
     local arg=$1
-    [ -z $arg ] && die "缺少参数arg"
+    [ -z "$arg" ] && die "缺少参数arg"
     cmd_str=$cmd_str' '$arg
-    echo $cmd_str
+    # echo $cmd_str
 }
 
 add_cmd_arg_prompt() {
@@ -36,31 +36,31 @@ add_cmd_arg_prompt() {
   local arg=$2
   local default_input=$(echo $arg | sed -nE 's/^.*\{\{(.*)\}\}.*$/\1/p')
 
-  [ -z $prompt ] && die "缺少参数prompt"
-  [ -z $arg ] && die "缺少参数arg"
+  [ -z "$prompt" ] && die "缺少参数prompt"
+  [ -z "$arg" ] && die "缺少参数arg"
 
-  echo $default_input
+  # echo $default_input
   prompt=${prompt}${default_input:+(默认：$default_input)}:
   read -p $prompt input
   cmd_str=$cmd_str' '${arg//\{\{*\}\}/${input:-$default_input}}
-  echo $cmd_str
+  # echo $cmd_str
 }
 add_cmd_arg_yn() {
   # add_cmd_arg_yn "是否添加某参数" "args"
   local prompt=$1
   local arg=$2
-  [ -z $prompt ] && die "缺少参数prompt"
-  [ -z $arg ] && die "缺少参数arg"
+  [ -z "$prompt" ] && die "缺少参数prompt"
+  [ -z "$arg" ] && die "缺少参数arg"
   yn $prompt && {
     cmd_str=$cmd_str' '$arg
   }
-  echo $cmd_str
+  # echo $cmd_str
 }
 
 add_cmd_arg_yn_prompt() {
   # add_cmd_arg_yn_prompt "是否添加某参数" "请输入参数" "args {{default_value}}"
   local prompt=$1
-  [ -z $prompt ] && die "缺少参数yn_prompt"
+  [ -z "$prompt" ] && die "缺少参数yn_prompt"
   yn $prompt && {
     shift;
     add_cmd_arg_prompt $@
