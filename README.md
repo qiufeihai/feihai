@@ -78,6 +78,11 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/java.
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/pyenv.sh)
 ```
 
+### golang
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/golang.sh | bash
+```
+
 ### cachecloud
 ```
 DB_URL=127.0.0.1 \
