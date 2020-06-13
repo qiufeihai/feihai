@@ -2,6 +2,11 @@
 #
 # docker install minio
 #
+
+log() {
+  echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
+}
+
 die() {
     printf 'error: %s.\n' "$1" >&2
     exit 1
@@ -66,6 +71,12 @@ add_cmd_arg_yn_prompt() {
     add_cmd_arg_prompt $@
   }
 }
+
+if ! type -p mc &>/dev/null; then
+    log 安装minio client
+    wget https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc
+    chmod +x /usr/local/bin/mc
+fi
 
 add_cmd_arg "docker run -d --restart always"
 add_cmd_arg_prompt "请输入容器名称" "--name {{minio}}"
