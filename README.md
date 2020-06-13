@@ -18,9 +18,29 @@ grep 'export PS1' -q ~/.bashrc || echo 'export PS1="[\\u@\h(`curl ifconfig.me 2>
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh | bash
 ```
 
+### nodejs
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh | bash
+```
+
 ### docker
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker.sh | bash
+```
+
+### docker mysql
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mysql.sh)
+```
+
+### redis   yum安装，启动服务
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
+```
+
+### docker mongodb
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mongodb.sh)
 ```
 
 ### mongodb
@@ -31,11 +51,6 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongo
 ### mysql
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh | bash
-```
-
-### docker mysql
-```
-bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mysql.sh)
 ```
 
 ### docker rabbit
@@ -53,19 +68,9 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/openresty.sh | bash
 ```
 
-### nodejs
-```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh | bash
-```
-
 ### redis
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis.sh | bash
-```
-
-### redis   yum安装，启动服务
-```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
 ```
 
 ### java
@@ -103,6 +108,11 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn
 // client
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn_client.sh | bash
 
+```
+
+### docker minio
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_minio.sh)
 ```
 
 ### n2n
