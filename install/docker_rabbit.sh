@@ -75,7 +75,7 @@ add_cmd_arg_prompt "请输入挂在目录" "-v {{/mnt/rabbit}}:/var/lib/rabbitmq
 add_cmd_arg_prompt "请输入web端口" "-p {{15672}}:15672" 
 add_cmd_arg_prompt "请输入端口" "-p {{5672}}:5672" 
 add_cmd_arg_prompt "请输入用户名" "-e RABBITMQ_DEFAULT_USER={{feihai}}" 
-add_cmd_arg_prompt "请输入密码" "-e RABBITMQ_DEFAULT_USER={{feihai}}" 
+add_cmd_arg_prompt "请输入密码" "-e RABBITMQ_DEFAULT_PASS={{feihai}}" 
 add_cmd_arg_prompt "请输入版本" "rabbitmq:{{3-management}}" 
 
 echo $cmd_str
