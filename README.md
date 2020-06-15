@@ -115,6 +115,11 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_minio.sh)
 ```
 
+### aliyun-cli、oss bash client
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/aliyun_cli.sh | bash
+```
+
 ### n2n
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/n2n.sh | bash
