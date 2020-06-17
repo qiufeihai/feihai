@@ -120,6 +120,11 @@ bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/instal
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/aliyun_cli.sh | bash
 ```
 
+### ossutil
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/ossutil.sh | bash
+```
+
 ### n2n
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/n2n.sh | bash
