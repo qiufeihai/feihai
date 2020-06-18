@@ -97,13 +97,11 @@ tar_file() {
 cron_job_push_to_oss() {
   for item in "${PUSH_FILE_TO_OSS_ARRAY[@]}"
   do
-  echo 111
     handle_item $item
   done
 
   for item2 in "${TAR_AND_PUSH_FILE_TO_OSS_ARRAY[@]}"
   do
-  echo 2222
     handle_item $item2 1
   done
 }
@@ -133,7 +131,7 @@ handle_item() {
   [[ $exec_interval_seconds = "" || $(($now - $latest_do_timestamp > $exec_interval_seconds)) == "1" ]] && {
     echo 执行：$cmd_str
     set_do_timestamp $cmd_str $LOG_FILE
-    exec $cmd_str 2>&1 | tee $LOG_FILE
+    eval $cmd_str 2>&1 | tee $LOG_FILE
   } || {
     echo 不执行
   }
@@ -142,7 +140,7 @@ handle_item() {
 manual_oss_push_or_pull() {
   cmd_str="ossutil cp -r $1 $2"
   echo 执行：$cmd_str
-  exec $cmd_str 2>&1 | tee $LOG_FILE
+  eval $cmd_str 2>&1 | tee $LOG_FILE
 }
 
 main() {
