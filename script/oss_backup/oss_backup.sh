@@ -138,7 +138,13 @@ handle_item() {
 }
 
 manual_oss_push_or_pull() {
-  cmd_str="ossutil cp -r $1 $2"
+  local src=$1
+  local dest=$2
+  # 如果时目录则压缩
+  [ -d $src ] && {
+    src=$(tar_file $src)
+  }
+  cmd_str="ossutil cp -r $src $dest"
   echo 执行：$cmd_str
   eval $cmd_str 2>&1 | tee $LOG_FILE
 }
