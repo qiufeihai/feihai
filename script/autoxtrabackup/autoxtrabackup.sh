@@ -19,6 +19,7 @@ compression=true
 keepDays=7
 sendEmail=never
 emailAddress=
+ossUrl=oss://bucket/path
 fi
 
 #####
@@ -145,6 +146,7 @@ if [ ! -f "$backupDir"/latest_full ]; then
         echo $dateNowUnix > "$backupDir"/latest_full
         lastFull=`cat "$backupDir"/latest_full`
         /usr/bin/innobackupex --user=$mysqlUser --password=$mysqlPwd --host=${mysqlHost:-127.0.0.1} --port=${mysqlPort:-3306} --datadir=$mysqlDataDir --no-timestamp $compress $compressThreads --rsync "$backupDir"/"$dateNow"_full > $backupLog 2>&1
+        # oss_backup.sh "$backupDir"/"$dateNow"_full $ossUrl 2>&1 | tee -a $backupLog # 上传到oss
 else
         # Calculate the time since the last full backup
         difference=$((($dateNowUnix - $lastFull) / 60 / 60))
@@ -154,10 +156,14 @@ else
                 #echo "It's been $difference hours since last full, doing an incremental backup"
                 lastFullDir=`date -d@"$lastFull" '+%Y-%m-%d_%H-%M-%S'`
                 /usr/bin/innobackupex --user=$mysqlUser --password=$mysqlPwd --host=${mysqlHost:-127.0.0.1} --port=${mysqlPort:-3306} --datadir=$mysqlDataDir --no-timestamp $compress $compressThreads --rsync --incremental --incremental-basedir="$backupDir"/"$lastFullDir"_full "$backupDir"/"$dateNow"_incr > $backupLog 2>&1
+                # oss_backup.sh "$backupDir"/"$dateNow"_incr $ossUrl 2>&1 | tee -a $backupLog # 上传到oss
+
         else
                 #echo "It's been $difference hours since last full backup, time for a new full backup"
                 echo $dateNowUnix > "$backupDir"/latest_full
                 /usr/bin/innobackupex --user=$mysqlUser --password=$mysqlPwd --host=${mysqlHost:-127.0.0.1} --port=${mysqlPort:-3306} --datadir=$mysqlDataDir --no-timestamp $compress $compressThreads --rsync "$backupDir"/"$dateNow"_full > $backupLog 2>&1
+                # oss_backup.sh "$backupDir"/"$dateNow"_full $ossUrl 2>&1 | tee -a $backupLog # 上传到oss
+
         fi
 fi
 

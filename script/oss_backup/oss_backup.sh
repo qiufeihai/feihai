@@ -52,7 +52,7 @@ set_do_timestamp() {
     local str_md5=$(md5 $1)
     local log_file=$2
     local timestamp=$(date +%s)
-    echo $str_md5 $timestamp  | tee $log_file
+    echo $str_md5 $timestamp  | tee -a $log_file
 }
 
 get_latest_do_timestamp() {
@@ -131,7 +131,7 @@ handle_item() {
   [[ $exec_interval_seconds = "" || $(($now - $latest_do_timestamp > $exec_interval_seconds)) == "1" ]] && {
     echo 执行：$cmd_str
     set_do_timestamp $cmd_str $LOG_FILE
-    eval $cmd_str 2>&1 | tee $LOG_FILE
+    eval $cmd_str 2>&1 | tee -a $LOG_FILE
   } || {
     echo 不执行
   }
@@ -146,7 +146,7 @@ manual_oss_push_or_pull() {
   }
   cmd_str="ossutil cp -r $src $dest"
   echo 执行：$cmd_str
-  eval $cmd_str 2>&1 | tee $LOG_FILE
+  eval $cmd_str 2>&1 | tee -a $LOG_FILE
 }
 
 main() {
