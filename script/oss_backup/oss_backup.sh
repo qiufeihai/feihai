@@ -89,7 +89,7 @@ EOF
 }
 
 tar_file() {
-  local tar_file_name=/tmp/$(date +%s)_${1##*/}.tar.gz
+  local tar_file_name=/tmp/$(date +"%Y_%m_%d_%H_%M_%S")_${1##*/}.tar.gz
   tar -Pzcvf $tar_file_name $1 2>&1 > /dev/null
   echo $tar_file_name
 }
