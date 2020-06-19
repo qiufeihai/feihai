@@ -1,7 +1,8 @@
 安装
 ---------
 ```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/oss_backup/oss_backup.sh | bash
+curl -L https://raw.githubusercontent.com/qiufeihai/feihai/master/script/oss_backup/oss_backup.sh -o oss_backup.sh &&
+sudo chmod +x oss_backup.sh && sudo mv oss_backup.sh /usr/local/bin/oss_backup.sh
 ```
 
 
