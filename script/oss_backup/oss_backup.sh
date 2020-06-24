@@ -9,7 +9,7 @@ LOG_FILE=/var/log/oss_backup.log
 OSS_UTIL_CONFIG_FILE=~/.ossutilconfig
 
 log() {
-  echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
+  echo $@ 2>&1 | tee -a $LOG_FILE
 }
 
 die() {
@@ -48,7 +48,7 @@ md5() {
 }
 
 set_do_timestamp() {
-  # Usage: set_do_timestamp "str" "LOG_FILE"
+  # Usage: set_do_timestamp "tag" "$LOG_FILE" 注意：str要带双引号
     local str_md5=$(md5 $1)
     local log_file=$2
     local timestamp=$(date +%s)
@@ -56,8 +56,8 @@ set_do_timestamp() {
 }
 
 get_latest_do_timestamp() {
-  # Usage: set_do_timestamp "str" "LOG_FILE"
-  local str_md5=$(md5 $1)
+  # Usage: get_latest_do_timestamp "tag" "$LOG_FILE" 注意：str要带双引号
+  local str_md5=$(md5 "$1")
   local log_file=$2
   grep "$str_md5" $log_file | awk '{print $2}' | tail -1
 }
@@ -89,7 +89,7 @@ EOF
 }
 
 tar_file() {
-  local tar_file_name=/tmp/$(date +"%Y_%m_%d_%H_%M_%S")_${1##*/}.tar.gz
+  local tar_file_name=/tmp/${1##*/}.tar.gz
   tar -Pzcvf $tar_file_name $1 2>&1 > /dev/null
   echo $tar_file_name
 }
@@ -108,32 +108,32 @@ cron_job_push_to_oss() {
 
 handle_item() {
   local item=$1
-  echo $item
   local is_tar=$2
   IFS=$ read -ra arr <<<$item
   # 源文件
   src_path=${arr[0]}
   # 压缩
-  [ $is_tar -eq 1 ] && src_path=$(tar_file $src_path)
+  [[ $is_tar == "1" ]] && src_path=$(tar_file $src_path)
   # oss地址
   dest_oss_url=${arr[1]}
+  dest_oss_url=${dest_oss_url%/}/$(date +"%Y_%m_%d_%H_%M_%S")_${src_path##*/}
   # 执行间隔，单位: 秒
   exec_interval_seconds=${arr[2]}
 
   cmd_str="ossutil cp -r $src_path $dest_oss_url"
 
-  latest_do_timestamp=$(get_latest_do_timestamp $cmd_str $LOG_FILE)
+  latest_do_timestamp=$(get_latest_do_timestamp "$item" $LOG_FILE)
   now=$(date +%s)
   
-  echo 上次执行  $cmd_str  时间：$latest_do_timestamp
-  echo 相差$((${now:-0} - ${latest_do_timestamp:-0}))秒
-  echo 至少相差${exec_interval_seconds:-0}秒才执行
+  log 上次执行  $cmd_str  时间：${latest_do_timestamp:-0}
+  log 相差$((${now:-0} - ${latest_do_timestamp:-0}))秒
+  log 至少相差${exec_interval_seconds:-0}秒才执行
   [[ $exec_interval_seconds = "" || $(($now - $latest_do_timestamp > $exec_interval_seconds)) == "1" ]] && {
-    echo 执行：$cmd_str
-    set_do_timestamp $cmd_str $LOG_FILE
+    log 执行：$cmd_str
+    set_do_timestamp "$item" $LOG_FILE
     eval $cmd_str 2>&1 | tee -a $LOG_FILE
   } || {
-    echo 不执行
+    log 不执行
   }
 }
 
@@ -144,19 +144,21 @@ manual_oss_push_or_pull() {
   [ -d $src ] && {
     src=$(tar_file $src)
   }
+  # if push
+  [[ $dest == oss* ]] && dest=${dest%/}/$(date +"%Y_%m_%d_%H_%M_%S")_${src##*/}
   cmd_str="ossutil cp -r $src $dest"
-  echo 执行：$cmd_str
+  log 执行：$cmd_str
   eval $cmd_str 2>&1 | tee -a $LOG_FILE
 }
 
 main() {
+  [[ $1 == "-h" || $1 == "--help" ]] && usage
+
   check_ossutil
 
   load_config_file
 
   config_oss
-
-  [[ $1 == "-h" || $1 == "--help" ]] && usage
 
   [ $# -ge 2 ] && {
     manual_oss_push_or_pull $@
