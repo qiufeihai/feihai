@@ -81,3 +81,5 @@ add_cmd_arg "-u 0 jenkins"
 
 echo $cmd_str
 exec $cmd_str
+
+echo "执行：docker exec -it jenkins cat /var/jenkins_home/secrets/initialAdminPassword  获取初始密码"
