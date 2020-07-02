@@ -81,3 +81,62 @@ add_cmd_arg "almir/webhook -verbose -hooks=/etc/webhook/hooks.json -hotreload"
 
 echo $cmd_str
 exec $cmd_str
+
+
+cat > /mnt/webhook/hooks.github.json <<EOF
+// see: https://github.com/adnanh/webhook/blob/master/docs/Hook-Definition.md
+[
+  {
+    "id": "my_id",
+    "execute-command": "/etc/webhook/my_script.sh",
+    "command-working-directory": "/etc/webhook",
+    "include-command-output-in-response": true,
+    "include-command-output-in-response-on-error": true,
+    "pass-arguments-to-command":
+    [
+      {
+        "source": "payload",
+        "name": "head_commit.id"
+      },
+      {
+        "source": "payload",
+        "name": "pusher.name"
+      },
+      {
+        "source": "payload",
+        "name": "pusher.email"
+      }
+    ],
+    "trigger-rule":
+    {
+      "and":
+      [
+        {
+          "match":
+          {
+            "type": "payload-hash-sha1",
+            "secret": "mysecret",
+            "parameter":
+            {
+              "source": "header",
+              "name": "X-Hub-Signature"
+            }
+          }
+        },
+        {
+          "match":
+          {
+            "type": "value",
+            "value": "refs/heads/master",
+            "parameter":
+            {
+              "source": "payload",
+              "name": "ref"
+            }
+          }
+        }
+      ]
+    }
+  }
+]
+EOF
