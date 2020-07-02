@@ -77,7 +77,7 @@ add_cmd_arg_prompt "请输入容器名称" "--name {{jenkins}}"
 add_cmd_arg_prompt "请输入web端口" "-p {{8080}}:8080"
 add_cmd_arg_prompt "请输入api端口" "-p {{50000}}:50000" 
 add_cmd_arg_prompt "请输入数据目录" "-v {{/mnt/jenkins/data}}:/var/jenkins_home" 
-add_cmd_arg "jenkins"
+add_cmd_arg "-u 0 jenkins"
 
 echo $cmd_str
 exec $cmd_str
