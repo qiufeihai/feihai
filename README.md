@@ -115,6 +115,12 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_minio.sh)
 ```
 
+
+### docker webhook
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_webhook.sh)
+```
+
 ### docker jenkins
 ```
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_jenkins.sh)
