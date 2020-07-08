@@ -56,3 +56,11 @@ if ! type -p zsh &>/dev/null; then
     log 安装zsh
     sudo yum install -y zsh
 fi
+
+# tmux auto start
+cat >> ~/.zshrc <<EOF
+if [ -z "\$TMUX" ]
+then
+    tmux attach -t tmux || tmux new -s tmux
+fi
+EOF
