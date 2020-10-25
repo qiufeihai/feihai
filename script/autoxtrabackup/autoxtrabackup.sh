@@ -19,7 +19,7 @@ compression=true
 keepDays=7
 sendEmail=never
 emailAddress=
-ossUrl=oss://bucket/path
+ossUrl=oss://bucket-name/path
 fi
 
 #####

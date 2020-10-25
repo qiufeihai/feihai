@@ -25,11 +25,17 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxt
 
 全量备份恢复
 ---------
-innobackupex --decompress $backupDir/BACKUP-DIR
+```
+docker stop mysql # 停掉mysqld
+xtrabackup --copy-back --target-dir=/path/to/YYYY-MM-DD_hh-mm-ss_full # 解压
+xtrabackup --prepare --target-dir=/path/to/YYYY-MM-DD_hh-mm-ss_full # 准备
+xtrabackup --copy-back --target-dir=/path/to/YYYY-MM-DD_hh-mm-ss_full -h /mnt/mysql/data # 恢复 -h 指定最终存储数据的目录
+docer restart mysql # 开启mysql
+```
 增量备份恢复的具体看autoxtrabackup -h
 
 各个配置路径
 ---------
-命令路径/usr/local/bin/autoxtrabackup
-配置文件路径/etc/default/autoxtrabackup
-定时任务配置/etc/cron.d/mysql_backup
+命令路径/usr/local/bin/autoxtrabackup  
+配置文件路径/etc/default/autoxtrabackup  
+定时任务配置/etc/cron.d/mysql_backup  

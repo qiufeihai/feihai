@@ -20,6 +20,7 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_a
 
 ### nodejs
 ```
+// 如果用zsh先切到zsh再装
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh | bash
 ```
 
@@ -38,6 +39,16 @@ bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/instal
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
 ```
 
+### openresty
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/openresty.sh | bash
+```
+
+### docker rabbit
+```
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_rabbit.sh)
+```
+
 ### docker mongodb
 ```
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mongodb.sh)
@@ -53,19 +64,9 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongo
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh | bash
 ```
 
-### docker rabbit
-```
-bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_rabbit.sh)
-```
-
 ### nginx
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx.sh | bash
-```
-
-### openresty
-```
-curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/openresty.sh | bash
 ```
 
 ### redis
@@ -86,6 +87,17 @@ bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/instal
 ### golang
 ```
 curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/golang.sh | bash
+```
+
+### autoxtrabackup
+```
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
+```
+
+### oss_backup.sh
+```
+curl -L https://raw.githubusercontent.com/qiufeihai/feihai/master/script/oss_backup/oss_backup.sh -o oss_backup.sh &&
+sudo chmod +x oss_backup.sh && sudo mv oss_backup.sh /usr/local/bin/oss_backup.sh
 ```
 
 ### cachecloud
@@ -114,7 +126,6 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn
 ```
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_minio.sh)
 ```
-
 
 ### docker webhook
 ```
