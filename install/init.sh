@@ -14,8 +14,15 @@ if ! type -p sudo &>/dev/null; then
     yum install -y sudo
 fi
 
+log 设置阿里镜像源
+sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+sudo curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-8.repo
 log 安装epel源
 sudo yum install -y epel-release
+
+sudo yum clean all
+sudo yum makecache
+
 
 log 设置上海时区
 timedatectl set-timezone "Asia/Shanghai"

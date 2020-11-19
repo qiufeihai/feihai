@@ -31,6 +31,17 @@ sudo yum-config-manager \
 log 安装docker
 sudo yum install -y docker-ce
 
+log 国内镜像加速
+cat > /etc/docker/daemon.json << EOF
+{
+  "registry-mirrors": [
+    "https://registry.docker-cn.com",
+    "http://hub-mirror.c.163.com",
+    "https://docker.mirrors.ustc.edu.cn"
+  ]
+}
+EOF
+
 log 安装docker-compose 1.25.3
 sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
