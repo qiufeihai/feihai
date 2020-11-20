@@ -3,7 +3,8 @@
   "editor.tabSize": 2,
   "editor.formatOnSave": false,
   "files.associations": {
-    "*.vue": "html"
+    "*.vue": "html",
+    "**/*.yml": "ansible"
   },
   "workbench.sideBar.location": "left",
   "window.menuBarVisibility": "default",
@@ -41,17 +42,30 @@
   "vim.surround": true,
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   "vim.otherModesKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
+      "before": [
+        "<leader>",
+        "d"
+      ],
+      "after": [
+        "d",
+        "d"
+      ]
     },
     {
-      "before": ["<C-n>"],
+      "before": [
+        "<C-n>"
+      ],
       "after": [],
       "commands": [
         {
@@ -75,8 +89,6 @@
     "editor.formatOnSave": false,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-
-
   // 解决cpu过高
   "search.followSymlinks": false,
   "vim.disableExtension": false,
@@ -89,21 +101,25 @@
     "**/node_modules": false,
     "**/bower_components": true
   },
-
-  // ansible
-  "files.associations": {
-    "**/*.yml": "ansible"
-},
-
-"vetur.format.defaultFormatter.html": "prettyhtml",
-"vetur.format.defaultFormatter.css": "prettier",
-"vetur.format.defaultFormatter.postcss": "prettier",
-"vetur.format.defaultFormatter.scss": "prettier",
-"vetur.format.defaultFormatter.less": "prettier",
-"vetur.format.defaultFormatter.stylus": "stylus-supremacy",
-"vetur.format.defaultFormatter.js": "prettier",
-"vetur.format.defaultFormatter.ts": "prettier",
-"[vue]": {
-  "editor.defaultFormatter": "esbenp.prettier-vscode"
-},
+  "vetur.format.defaultFormatter.html": "prettyhtml",
+  "vetur.format.defaultFormatter.css": "prettier",
+  "vetur.format.defaultFormatter.postcss": "prettier",
+  "vetur.format.defaultFormatter.scss": "prettier",
+  "vetur.format.defaultFormatter.less": "prettier",
+  "vetur.format.defaultFormatter.stylus": "stylus-supremacy",
+  "vetur.format.defaultFormatter.js": "prettier",
+  "vetur.format.defaultFormatter.ts": "prettier",
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    }
+  },
+  "launch": {
+    "configurations": [],
+    "compounds": []
+  },
 }
