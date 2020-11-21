@@ -14,15 +14,27 @@ if ! type -p sudo &>/dev/null; then
     yum install -y sudo
 fi
 
-log 设置阿里镜像源
-sudo mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
-sudo curl -o /etc/yum.repos.d/CentOS-Base.repo https://mirrors.aliyun.com/repo/Centos-8.repo
+log 设置中科大yum源
+sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+         -e 's|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g' \
+         -i.bak \
+         /etc/yum.repos.d/CentOS-Base.repo
 log 安装epel源
 sudo yum install -y epel-release
 
 sudo yum clean all
 sudo yum makecache
 
+log 安装yum-utils
+sudo yum install -y yum-utils
+
+log 安装ntp服务，同步时间
+sudo yum install -y ntp
+systemctl enable ntpd
+systemctl start ntpd
+timedatectl set-ntp yes
+ntpq -p
+# todo 设置时间服务器地址
 
 log 设置上海时区
 timedatectl set-timezone "Asia/Shanghai"
