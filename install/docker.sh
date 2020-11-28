@@ -14,24 +14,20 @@ sudo yum remove docker \
                   docker-latest \
                   docker-latest-logrotate \
                   docker-logrotate \
-                  docker-selinux \
-                  docker-engine-selinux \
                   docker-engine
 
 log SET UP THE REPOSITORY
-sudo yum install -y yum-utils \
-  device-mapper-persistent-data \
-  lvm2
-
-log set up the stable repository
+sudo yum install -y yum-utils
 sudo yum-config-manager \
     --add-repo \
     https://download.docker.com/linux/centos/docker-ce.repo
 
+
 log 安装docker
-sudo yum install -y docker-ce
+sudo yum install -y docker-ce docker-ce-cli containerd.io
 
 log 国内镜像加速
+mkdir -p /etc/docker/
 cat > /etc/docker/daemon.json << EOF
 {
   "registry-mirrors": [
@@ -42,8 +38,8 @@ cat > /etc/docker/daemon.json << EOF
 }
 EOF
 
-log 安装docker-compose 1.25.3
-sudo curl -L "https://github.com/docker/compose/releases/download/1.25.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+log DaoCloud加速安装docker-compose
+sudo curl -L https://get.daocloud.io/docker/compose/releases/download/1.27.4/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
 sudo chmod +x /usr/local/bin/docker-compose
 
 log 开启docker服务
