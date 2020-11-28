@@ -21,6 +21,7 @@ sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
          /etc/yum.repos.d/CentOS-Base.repo
 log 安装epel源
 sudo yum install -y epel-release
+log epel设置中科大源
 sed -e 's!^mirrorlist=!#mirrorlist=!g' \
 	-e 's!^#baseurl=!baseurl=!g' \
 	-e 's!^metalink!#metalink!g' \
