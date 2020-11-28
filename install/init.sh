@@ -21,6 +21,12 @@ sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
          /etc/yum.repos.d/CentOS-Base.repo
 log 安装epel源
 sudo yum install -y epel-release
+sed -e 's!^mirrorlist=!#mirrorlist=!g' \
+	-e 's!^#baseurl=!baseurl=!g' \
+	-e 's!^metalink!#metalink!g' \
+	-e 's!//download\.fedoraproject\.org/pub!//mirrors.ustc.edu.cn!g' \
+	-e 's!http://mirrors\.ustc!https://mirrors.ustc!g' \
+	-i.bak /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
 
 sudo yum clean all
 sudo yum makecache
