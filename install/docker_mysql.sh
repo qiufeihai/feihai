@@ -45,4 +45,16 @@ docker run --name $CONTAINER_NAME \
 -e MYSQL_ROOT_PASSWORD=$ROOT_PASSWORD \
 -d mysql:$MYSQL_VERSION
 
-# 优化 vim /mnt/mysql/conf.d/my.cnf [mysqld] innodb_large_prefix = TRUE innodb_file_format = BARRACUDA max_connections = 2000
+cat >> $CONF_DIR/my.cnf << EOF
+[mysqld]
+innodb_large_prefix = TRUE
+innodb_file_format = BARRACUDA
+max_connections = 2000
+
+#server-id        = 1
+#binlog_format    = row
+#log_bin          = mysql-bin
+#binlog_do_db     = db_name   # Optional, limit which databases to log
+#expire_logs_days = 10          # Optional, purge old logs
+#max_binlog_size  = 100M        # Optional, limit log size
+EOF
