@@ -6,14 +6,14 @@ log() {
 }
 
 log 下载
-wget http://download.redis.io/releases/redis-5.0.5.tar.gz
-tar xzf redis-5.0.5.tar.gz
-cd redis-5.0.5
+wget https://download.redis.io/releases/redis-6.0.9.tar.gz
+tar xzf redis-6.0.9.tar.gz
+cd redis-6.0.9
 log 编译
 make
 log 软连接
 [ ! -d $HOME/bin ] &&  mkdir $HOME/bin
-ln -s $PWD/redis-5.0.5/src/redis-server $HOME/bin/redis-server
-ln -s $PWD/redis-5.0.5/src/redis-cli $HOME/bin/redis-cli
+ln -s $PWD/redis-6.0.9/src/redis-server $HOME/bin/redis-server
+ln -s $PWD/redis-6.0.9/src/redis-cli $HOME/bin/redis-cli
 
 
