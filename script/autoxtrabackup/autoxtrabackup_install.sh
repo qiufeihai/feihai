@@ -17,11 +17,11 @@ yum install -y qpress
 fi
 
 log 下载命令
-curl -L https://raw.staticdn.net/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.sh -o autoxtrabackup &&
+curl -L https://raw.sevencdn.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.sh -o autoxtrabackup &&
 sudo chmod +x autoxtrabackup && sudo mv autoxtrabackup /usr/local/bin/autoxtrabackup
 
 log 下载配置文件
-curl -L https://raw.staticdn.net/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.config -o autoxtrabackup &&
+curl -L https://raw.sevencdn.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup.config -o autoxtrabackup &&
 sudo mv autoxtrabackup /etc/default/autoxtrabackup
 
 cat > /etc/cron.d/mysql_backup << EOF

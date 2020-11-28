@@ -32,7 +32,7 @@ sed -i '{
 
 if ! type -p docker &>/dev/null; then
     log 安装docker
-    curl -o- https://raw.staticdn.net/qiufeihai/feihai/master/install/docker.sh | bash
+    curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker.sh | bash
 fi
 
 log 启动临时数据库命令：

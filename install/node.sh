@@ -6,7 +6,7 @@ log() {
 }
 
 log 下载nvm
-curl -o- https://raw.staticdn.net/nvm-sh/nvm/v0.37.1/install.sh | bash
+curl -o- https://raw.sevencdn.com/nvm-sh/nvm/v0.37.1/install.sh | bash
 
 log 引入nvm到zshrc
 echo  'export NVM_DIR="$HOME/.nvm"
