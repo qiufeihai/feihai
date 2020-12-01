@@ -1,18 +1,25 @@
 #!/usr/bin/env bash
 # author: feihai
-# install mongodb4.2
+# install mongodb
 log() {
   echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
 }
+
+while [ -z "$VERSION" ]
+do
+read -p '请输入mongodb版本(默认:4.4)：' VERSION;
+VERSION=${VERSION:-4.4}
+done
+
 log 添加yum.repo
 # 注意\$releasever的$前面有\
-cat > /etc/yum.repos.d/mongodb-org-4.4.repo << EOF
-[mongodb-org-4.4]
+cat > /etc/yum.repos.d/mongodb-org-${VERSION}.repo << EOF
+[mongodb-org-${VERSION}]
 name=MongoDB Repository
-baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/4.4/x86_64/
+baseurl=https://repo.mongodb.org/yum/redhat/\$releasever/mongodb-org/${VERSION}/x86_64/
 gpgcheck=1
 enabled=1
-gpgkey=https://www.mongodb.org/static/pgp/server-4.4.asc
+gpgkey=https://www.mongodb.org/static/pgp/server-${VERSION}.asc
 EOF
 
 log 安装mongodb

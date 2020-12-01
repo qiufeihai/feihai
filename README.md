@@ -100,9 +100,11 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_m
 ### mongodb
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/mongodb.sh | bash
+bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/mongodb.sh)
 # gitee
-bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_mongodb.sh)
+bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/mongodb.sh)
+# 卸载mongodb
+bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/uninstall_mongodb.sh)
 ```
 
 ### mysql
