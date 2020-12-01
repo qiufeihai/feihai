@@ -125,6 +125,9 @@ add_cmd_arg_prompt "请输入root密码" "-e MONGO_INITDB_ROOT_PASSWORD={{123456
 add_cmd_arg_prompt "请输入数据目录" " -v {{/mnt/mongodb/data}}:/data/db" 
 add_cmd_arg_prompt "请输入配置文件目录" " -v {{/mnt/mongodb}}:/etc/mongo" 
 add_cmd_arg_prompt "请输入版本" "mongo:{{latest}}"
+add_cmd_arg "--config /etc/mongo/mongod.conf"
+
 init_config
+
 echo $cmd_str
 exec $cmd_str
