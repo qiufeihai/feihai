@@ -68,6 +68,7 @@ add_cmd_arg_yn_prompt() {
 }
 
 init_config() {
+mkdir -p /mnt/mongodb/conf/
 cat > /mnt/mongodb/conf/mongod.conf <<EOF
 # mongod.conf
 
