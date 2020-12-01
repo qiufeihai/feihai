@@ -67,13 +67,64 @@ add_cmd_arg_yn_prompt() {
   }
 }
 
+init_config() {
+cat > /mnt/mongodb/mongod.conf <<EOF
+# mongod.conf
+
+# for documentation of all options, see:
+#   http://docs.mongodb.org/manual/reference/configuration-options/
+
+# where to write logging data.
+systemLog:
+  destination: file
+  logAppend: true
+  path: /var/log/mongodb/mongod.log
+
+# Where and how to store data.
+storage:
+  dbPath: /var/lib/mongo
+  journal:
+    enabled: true
+#  engine:
+#  wiredTiger:
+
+# how the process runs
+processManagement:
+  fork: true  # fork and run in background
+  pidFilePath: /var/run/mongodb/mongod.pid  # location of pidfile
+  timeZoneInfo: /usr/share/zoneinfo
+
+# network interfaces
+net:
+  port: 27017
+  bindIp: 127.0.0.1  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
+
+
+#security:
+
+#operationProfiling:
+
+#replication:
+
+#sharding:
+
+## Enterprise-Only Options
+
+#auditLog:
+
+#snmp:
+
+EOF
+}
+
 add_cmd_arg "docker run -d --restart always"
 add_cmd_arg_prompt "请输入容器名称" "--name {{mongodb}}"
 add_cmd_arg_prompt "请输入端口" "-p {{27017}}:27017" 
 add_cmd_arg_prompt "请输入root用户名" "-e MONGO_INITDB_ROOT_USERNAME={{root}}" 
 add_cmd_arg_prompt "请输入root密码" "-e MONGO_INITDB_ROOT_PASSWORD={{123456789}}" 
 add_cmd_arg_prompt "请输入数据目录" " -v {{/mnt/mongodb/data}}:/data/db" 
+add_cmd_arg_prompt "请输入配置文件目录" " -v {{/mnt/mongodb}}:/etc/mongo" 
 add_cmd_arg_prompt "请输入版本" "mongo:{{latest}}"
-
+init_config
 echo $cmd_str
 exec $cmd_str

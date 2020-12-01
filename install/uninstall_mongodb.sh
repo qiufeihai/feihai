@@ -6,6 +6,7 @@ log() {
 }
 log 卸载mongodb
 sudo yum erase -y  $(rpm -qa | grep mongodb-org)
+sudo yum clean all
 echo "执行："
 echo "sudo rm -r /var/log/mongodb"
 echo "sudo rm -r /var/lib/mongo"

@@ -11,6 +11,9 @@ read -p '请输入mongodb版本(默认:4.4)：' VERSION;
 VERSION=${VERSION:-4.4}
 done
 
+
+log 删除mongodb yum.repo
+rm -f /etc/yum.repos.d/mongodb-org*
 log 添加yum.repo
 # 注意\$releasever的$前面有\
 cat > /etc/yum.repos.d/mongodb-org-${VERSION}.repo << EOF
