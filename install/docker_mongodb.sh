@@ -82,7 +82,7 @@ systemLog:
 
 # Where and how to store data.
 storage:
-  dbPath: /var/lib/mongo
+  dbPath: /data/db
   journal:
     enabled: true
 #  engine:
@@ -97,7 +97,7 @@ processManagement:
 # network interfaces
 net:
   port: 27017
-  bindIp: 127.0.0.1  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
+  bindIp: 0.0.0.0  # Enter 0.0.0.0,:: to bind to all IPv4 and IPv6 addresses or, alternatively, use the net.bindIpAll setting.
 
 
 #security:
