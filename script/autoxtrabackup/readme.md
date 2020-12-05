@@ -1,7 +1,7 @@
 安装
 ---------
 ```
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
 ```
 
 备份

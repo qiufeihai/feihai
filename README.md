@@ -3,7 +3,7 @@
 ### systemctl
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/script/systemctl.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/systemctl.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/script/systemctl.sh | bash
 ```
@@ -11,7 +11,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/script/systemctl.sh | b
 ### init
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/init.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/init.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/init.sh | bash
 ```
@@ -27,7 +27,7 @@ grep 'export PS1' -q ~/.bashrc || echo 'export PS1="[\\u@\h(`curl ifconfig.me 2>
 ### zsh_autosuggestions
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/zsh_autosuggestions.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/zsh_autosuggestions.sh | bash
 
@@ -37,7 +37,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/zsh_autosuggest
 ```
 // 如果用zsh先切到zsh再装
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/node.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/node.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/node.sh | bash
 # nvm 加速安装nodejs
@@ -51,7 +51,7 @@ npm config set ELECTRON_MIRROR http://npm.taobao.org/mirrors/electron/
 ### docker
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker.sh | bash
 # gitee 
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker.sh | bash
 ```
@@ -59,7 +59,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker.sh | bas
 ### docker mysql
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker_mysql.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mysql.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_mysql.sh)
 
@@ -68,7 +68,7 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_m
 ### redis   yum安装，启动服务
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis_yum.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/redis_yum.sh | bash
 ```
@@ -76,7 +76,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/redis_yum.sh | 
 ### openresty
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/openresty.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/openresty.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/openresty.sh | bash
 ```
@@ -84,7 +84,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/openresty.sh | 
 ### docker rabbit
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker_rabbit.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_rabbit.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_rabbit.sh)
 ```
@@ -92,7 +92,7 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_r
 ### docker mongodb
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker_mongodb.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mongodb.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_mongodb.sh)
 ```
@@ -100,17 +100,17 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_m
 ### mongodb
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/mongodb.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mongodb.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/mongodb.sh)
 # 卸载mongodb
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/uninstall_mongodb.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/uninstall_mongodb.sh)
 ```
 
 ### mysql
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/mysql.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/mysql.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/mysql.sh | bash
 ```
@@ -118,7 +118,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/mysql.sh | bash
 ### nginx
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/nginx.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/nginx.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/nginx.sh | bash
 ```
@@ -126,7 +126,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/nginx.sh | bash
 ### redis
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/redis.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/redis.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/redis.sh | bash
 ```
@@ -134,7 +134,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/redis.sh | bash
 ### java
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/java.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/java.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/java.sh | bash
 ```
@@ -142,7 +142,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/java.sh | bash
 ### pyenv (python 版本管理)
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/pyenv.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/pyenv.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/pyenv.sh)
 ```
@@ -150,7 +150,7 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/pyenv.sh
 ### golang
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/golang.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/golang.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/golang.sh | bash
 ```
@@ -158,7 +158,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/golang.sh | bas
 ### autoxtrabackup
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/script/autoxtrabackup/autoxtrabackup_install.sh | bash
 
@@ -167,7 +167,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/script/autoxtrabackup/a
 ### oss_backup.sh
 ```
 # github
-curl -L https://raw.sevencdn.com/qiufeihai/feihai/master/script/oss_backup/oss_backup.sh -o oss_backup.sh &&
+curl -L https://raw.githubusercontent.com/qiufeihai/feihai/master/script/oss_backup/oss_backup.sh -o oss_backup.sh &&
 sudo chmod +x oss_backup.sh && sudo mv oss_backup.sh /usr/local/bin/oss_backup.sh
 
 # gitee
@@ -183,24 +183,24 @@ DB_URL=127.0.0.1 \
 && DB_USER=root \
 && DB_PASSWORD=123456789 \
 && WEB_PORT=8585 \
-&& curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/cachecloud.sh | bash
+&& curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/cachecloud.sh | bash
 
 ```
 
 ### dsvpn
 ```
 // server
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/dsvpn_server.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn_server.sh | bash
 
 // client
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/dsvpn_client.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/dsvpn_client.sh | bash
 
 ```
 
 ### docker minio
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker_minio.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_minio.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_minio.sh)
 ```
@@ -208,7 +208,7 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_m
 ### docker webhook
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker_webhook.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_webhook.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_webhook.sh)
 ```
@@ -216,7 +216,7 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_w
 ### docker jenkins
 ```
 # github
-bash <(curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/docker_jenkins.sh)
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_jenkins.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_jenkins.sh)
 ```
@@ -224,7 +224,7 @@ bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_j
 ### aliyun-cli、oss bash client
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/aliyun_cli.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/aliyun_cli.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/aliyun_cli.sh | bash
 ```
@@ -232,7 +232,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/aliyun_cli.sh |
 ### ossutil
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/ossutil.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/ossutil.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/ossutil.sh | bash
 ```
@@ -240,7 +240,7 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/ossutil.sh | ba
 ### n2n
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/n2n.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/n2n.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/n2n.sh | bash
 ```
@@ -254,7 +254,7 @@ docker run -d -p 2222:22 --name vm1 ilemonrain/centos-sshd
 ### ffmpeg
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/ffmpeg.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/ffmpeg.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/ffmpeg.sh | bash
 ```
@@ -262,14 +262,14 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/ffmpeg.sh | bas
 ### xtrabackup
 ```
 # github
-curl -o- https://raw.sevencdn.com/qiufeihai/feihai/master/install/xtrabackup.sh | bash
+curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/xtrabackup.sh | bash
 # gitee
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/xtrabackup.sh | bash
 ```
 
 ### bbr,选择bbrplus
 ```
-wget -N --no-check-certificate "https://raw.sevencdn.com/chiakge/Linux-NetSpeed/master/tcp.sh"
+wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh"
 chmod +x tcp.sh
 ./tcp.sh
 ```

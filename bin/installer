@@ -45,7 +45,7 @@ install_node() {
 
 __install_nvm() {
   start install_nvm
-  wget -qO- https://raw.sevencdn.com/creationix/nvm/v0.33.8/install.sh | bash
+  wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | bash
   command -v nvm
   end install_nvm
 }
@@ -62,7 +62,7 @@ install_chromium() {
 #install_ssr翻墙用的ssr客户端
 install_ssr() {
   start inistall_ssr
-  sudo wget -P $HOME/.local/bin/ https://raw.sevencdn.com/the0demiurge/CharlesScripts/master/charles/bin/ssr
+  sudo wget -P $HOME/.local/bin/ https://raw.githubusercontent.com/the0demiurge/CharlesScripts/master/charles/bin/ssr
   sudo chown $USERNAME:$USERNAME $HOME/.local/bin/ssr
   sudo chmod u+x $HOME/.local/bin/ssr
   end install_ssr
