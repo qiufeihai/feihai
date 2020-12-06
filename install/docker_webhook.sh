@@ -37,9 +37,11 @@ add_cmd_arg() {
 }
 
 add_cmd_arg_prompt() {
-  # add_cmd_arg_prompt "请输入参数" "args {{default_value}}"
+  # Usage: add_cmd_arg_prompt "请输入参数" "args {{default_value}}" "input_var_name"
+  # __input数组和input_var_name可以获取prompt输入的值
   local prompt=$1
   local arg=$2
+  local input_var_name=$3
   local default_input=$(echo $arg | sed -nE 's/^.*\{\{(.*)\}\}.*$/\1/p')
 
   [ -z "$prompt" ] && die "缺少参数prompt"
@@ -48,7 +50,9 @@ add_cmd_arg_prompt() {
   # echo $default_input
   prompt=${prompt}${default_input:+(默认：$default_input)}:
   read -p $prompt input
-  cmd_str=$cmd_str' '${arg//\{\{*\}\}/${input:-$default_input}}
+  cmd_str=$cmd_str' '${arg//\{\{*\}\}/${input:=$default_input}}
+  __input[${#__input[*]}]=$input;
+  [ ! -z "$input_var_name" ] && eval "$input_var_name=$input"
   # echo $cmd_str
 }
 add_cmd_arg_yn() {
@@ -64,7 +68,7 @@ add_cmd_arg_yn() {
 }
 
 add_cmd_arg_yn_prompt() {
-  # add_cmd_arg_yn_prompt "是否添加某参数" "请输入参数" "args {{default_value}}"
+  # add_cmd_arg_yn_prompt "是否添加某参数" "请输入参数" "args {{default_value}}" "input_var_name"
   local prompt=$1
   [ -z "$prompt" ] && die "缺少参数yn_prompt"
   yn $prompt && {
