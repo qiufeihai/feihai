@@ -68,8 +68,12 @@ read_input() {
 }
 
 exec_cmd() {
-  xtrabackup --host=$HOST --port=$PORT --username=$USERNAME --password=$PASSWORD  --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME
-  tar -zcvf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz $TARGE_DIR/$BACKUP_DIR_NAME --remove-files
+  echo "xtrabackup --host=$HOST --port=$PORT --username=$USERNAME --password=$PASSWORD  --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
+  BACK_LOG=/var/log/mysql_backup.log
+  xtrabackup --host=$HOST --port=$PORT --username=$USERNAME --password=$PASSWORD  --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME > $BACK_LOG 2>&1
+  grep -q "completed OK" $BACK_LOG && {
+    tar -cf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz $TARGE_DIR/$BACKUP_DIR_NAME --remove-files
+  }
 }
 
 main() {
