@@ -55,6 +55,12 @@ read_input() {
     done
   }
 
+
+  while [ -z "$DATABASE" ]
+  do
+  read -p '请输入database，不填则备份所有库：' DATABASE;
+  done
+
   while [ -z "$DATA_DIR" ]
   do
   read -p '请输入数据目录(默认:/var/lib/mysql)：' DATA_DIR;
@@ -80,8 +86,9 @@ exec_cmd() {
   } || {
     LOGIN_PATH="--login-path=$LOGIN_PATH"
   }
-  echo "xtrabackup $LOGIN_PATH --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
-  xtrabackup $LOGIN_PATH --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
+  [ ! -z "$DATABASE" ] && DATABASE="--database=$DATABASE"
+  echo "xtrabackup $LOGIN_PATH $DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
+  xtrabackup $LOGIN_PATH $DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
   grep -q "completed OK" && {
     echo "tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files"
     tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files

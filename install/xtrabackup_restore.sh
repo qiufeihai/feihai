@@ -41,8 +41,8 @@ uncompressing() {
   echo $TARGE_DIR  | grep -qE 'tar.gz$' && {
     BASENAME=`tar --exclude="*/*" -ztvf $TARGE_DIR | awk '{print $6}' | head -1`
     BACKUP_DIR=`dirname $TARGE_DIR`/${BASENAME%%/*}
-    # tar -zxf $TARGE_DIR -C `dirname $TARGE_DIR` && rm -f $TARGE_DIR
-    tar -zxf $TARGE_DIR -C `dirname $TARGE_DIR`
+    tar -zxf $TARGE_DIR -C `dirname $TARGE_DIR` && rm -f $TARGE_DIR
+    # tar -zxf $TARGE_DIR -C `dirname $TARGE_DIR`
     TARGE_DIR=$BACKUP_DIR
   }
 }
