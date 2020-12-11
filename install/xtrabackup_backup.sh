@@ -17,32 +17,44 @@ check_xtrabackup_install() {
 }
 
 read_input() {
-  while [ -z "$HOST" ]
-  do
-  read -p '请输入host(默认:localhost)：' HOST;
-  HOST=${HOST:=localhost}
-  done
 
-  while [ -z "$PORT" ]
-  do
-  read -p '请输入port(默认:3306)：' PORT;
-  PORT=${PORT:=3306}
-  done
+  if type -p mysql_config_editor &>/dev/null; then
+      read -p '请输入--login-path，不输入则需要输入账号密码：' LOGIN_PATH;
+      while [ ! -z "$LOGIN_PATH" ] && [ -z `mysql_config_editor print | grep -qE "\[$LOGIN_PATH\]" && echo 1` ]
+      do
+        read -p '请输入--login-path，不输入则需要输入账号密码：' LOGIN_PATH;
+      done
+  fi
+
+  IS_LOGIN_PATH_EXIST=`mysql_config_editor print | grep -qE "\[$LOGIN_PATH\]"`
+  [ -z "$LOGIN_PATH" ] && {
+    while [ -z "$HOST" ]
+    do
+    read -p '请输入host(默认:localhost)：' HOST;
+    HOST=${HOST:=localhost}
+    done
+
+    while [ -z "$PORT" ]
+    do
+    read -p '请输入port(默认:3306)：' PORT;
+    PORT=${PORT:=3306}
+    done
 
 
-  while [ -z "$USERNAME" ]
-  do
-  read -p '请输入username(默认:root)：' USERNAME;
-  USERNAME=${USERNAME:=root}
-  done
+    while [ -z "$USERNAME" ]
+    do
+    read -p '请输入username(默认:root)：' USERNAME;
+    USERNAME=${USERNAME:=root}
+    done
 
 
-  while [ -z "$PASSWORD" ]
-  do
-  read -p '请输入password：' -s PASSWORD;
-  echo;
-  PASSWORD=${PASSWORD}
-  done
+    while [ -z "$PASSWORD" ]
+    do
+    read -p '请输入password：' -s PASSWORD;
+    echo;
+    PASSWORD=${PASSWORD}
+    done
+  }
 
 
   while [ -z "$DATABASE" ]
@@ -68,8 +80,13 @@ read_input() {
 }
 
 exec_cmd() {
-  echo "xtrabackup --host=$HOST --port=$PORT --username=$USERNAME --password=$PASSWORD  --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
-  xtrabackup --host=$HOST --port=$PORT --username=$USERNAME --password=$PASSWORD  --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
+  [ -z "$LOGIN_PATH" ] && {
+    LOGIN_PATH="--host=$HOST --port=$PORT --username=$USERNAME --password=$PASSWORD"
+  } || {
+    LOGIN_PATH="--login-path=$LOGIN_PATH"
+  }
+  echo "xtrabackup $LOGIN_PATH --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
+  xtrabackup $LOGIN_PATH --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
   grep -q "completed OK" && {
     echo "tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files"
     tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files
