@@ -22,7 +22,7 @@ read_input() {
       read -p '请输入--login-path，不输入则需要输入账号密码：' LOGIN_PATH;
       while [ ! -z "$LOGIN_PATH" ] && [ -z `mysql_config_editor print | grep -qE "\[$LOGIN_PATH\]" && echo 1` ]
       do
-        read -p '请输入--login-path，不输入则需要输入账号密码：' LOGIN_PATH;
+        read -p '请输入--login-path，不输入则需要输入host,port,username,port：' LOGIN_PATH;
       done
   fi
 
@@ -52,7 +52,6 @@ read_input() {
     do
     read -p '请输入password：' -s PASSWORD;
     echo;
-    PASSWORD=${PASSWORD}
     done
   }
 
@@ -60,7 +59,6 @@ read_input() {
   while [ -z "$DATABASE" ]
   do
   read -p '请输入database：' DATABASE;
-  DATABASE=${DATABASE}
   done
 
   while [ -z "$DATA_DIR" ]
@@ -72,7 +70,7 @@ read_input() {
   while [ -z "$TARGE_DIR" ]
   do
   read -p '请输入备份保存目录：' TARGE_DIR;
-  TARGE_DIR=${TARGE_DIR}
+  TARGE_DIR=`realpath $TARGE_DIR`
   done
 
   BACKUP_DIR_NAME=full-`date '+%Y-%m-%d-%H-%M'`-`uuidgen -t`
