@@ -291,8 +291,10 @@ curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/xtrab
 curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/xtrabackup.sh | bash
 # 备份
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/xtrabackup_backup.sh)
+bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/xtrabackup_backup.sh)
 # 恢复
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/xtrabackup_restore.sh)
+bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/xtrabackup_restore.sh)
 ```
 
 ### bbr,选择bbrplus
