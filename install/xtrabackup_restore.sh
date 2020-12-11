@@ -26,7 +26,10 @@ read_input() {
   while [ -z "$TARGE_DIR" ]
   do
   read -p '请输入备份保存目录：' TARGE_DIR;
-  TARGE_DIR=`realpath $TARGE_DIR`
+  [[ "$TARGE_DIR" == "~"* ]] && {
+    echo 不能以~开头;
+    TARGE_DIR=
+  }
   done
 
   BACKUP_DIR_NAME=full-`date '+%Y-%m-%d-%H-%M'`-`uuidgen -t`

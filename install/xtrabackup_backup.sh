@@ -55,12 +55,6 @@ read_input() {
     done
   }
 
-
-  while [ -z "$DATABASE" ]
-  do
-  read -p '请输入database：' DATABASE;
-  done
-
   while [ -z "$DATA_DIR" ]
   do
   read -p '请输入数据目录(默认:/var/lib/mysql)：' DATA_DIR;
@@ -70,7 +64,10 @@ read_input() {
   while [ -z "$TARGE_DIR" ]
   do
   read -p '请输入备份保存目录：' TARGE_DIR;
-  TARGE_DIR=`realpath $TARGE_DIR`
+  [[ "$TARGE_DIR" == "~"* ]] && {
+    echo 不能以~开头;
+    TARGE_DIR=
+  }
   done
 
   BACKUP_DIR_NAME=full-`date '+%Y-%m-%d-%H-%M'`-`uuidgen -t`
@@ -83,8 +80,8 @@ exec_cmd() {
   } || {
     LOGIN_PATH="--login-path=$LOGIN_PATH"
   }
-  echo "xtrabackup $LOGIN_PATH --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
-  xtrabackup $LOGIN_PATH --database=$DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
+  echo "xtrabackup $LOGIN_PATH --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
+  xtrabackup $LOGIN_PATH --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
   grep -q "completed OK" && {
     echo "tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files"
     tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files
