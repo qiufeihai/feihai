@@ -58,7 +58,7 @@ read_input() {
 
   while [ -z "$DATABASE" ]
   do
-  read -p '请输入database，不填则备份所有库：' DATABASE;
+  read -p '请输入database，多个以空格间隔，不填则备份所有库：' DATABASE;
   done
 
   while [ -z "$DATA_DIR" ]
@@ -86,7 +86,7 @@ exec_cmd() {
   } || {
     LOGIN_PATH="--login-path=$LOGIN_PATH"
   }
-  [ ! -z "$DATABASE" ] && DATABASE="--database=$DATABASE"
+  [ ! -z "$DATABASE" ] && DATABASE="--databases=\"$DATABASE\""
   echo "xtrabackup $LOGIN_PATH $DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
   xtrabackup $LOGIN_PATH $DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
   grep -q "completed OK" && {
