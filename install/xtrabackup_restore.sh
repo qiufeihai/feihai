@@ -30,6 +30,10 @@ read_input() {
     echo 不能以~开头;
     TARGE_DIR=
   }
+  [ ! -e "$TARGE_DIR" ] && {
+    echo $TARGE_DIR不存在;
+    TARGE_DIR=
+  }
   done
 
   BACKUP_DIR_NAME=full-`date '+%Y-%m-%d-%H-%M'`-`uuidgen -t`
@@ -39,8 +43,10 @@ read_input() {
 # 如果是压缩文件就解压
 uncompressing() {
   echo $TARGE_DIR  | grep -qE 'tar.gz$' && {
-    BASENAME=`tar --exclude="*/*" -ztvf $TARGE_DIR | awk '{print $6}' | head -1`
+    BASENAME=`tar -ztvf $TARGE_DIR | awk '{print $6}' | head -1`
+    echo "BASENAME: $BASENAME"
     BACKUP_DIR=`dirname $TARGE_DIR`/${BASENAME%%/*}
+    echo "BACKUP_DIR: $BACKUP_DIR"
     tar -zxf $TARGE_DIR -C `dirname $TARGE_DIR` && rm -f $TARGE_DIR
     # tar -zxf $TARGE_DIR -C `dirname $TARGE_DIR`
     TARGE_DIR=$BACKUP_DIR
@@ -56,6 +62,7 @@ exec_cmd() {
   log 解压
   uncompressing
   log 准备
+  echo "xtrabackup --prepare --target-dir=${TARGE_DIR%%/}"
   xtrabackup --prepare --target-dir=${TARGE_DIR%%/} 2>&1 | tee /dev/tty | \
   grep -qE "completed OK|This target seems to be already prepared" && {
       log 恢复
