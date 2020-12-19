@@ -19,10 +19,10 @@ check_xtrabackup_install() {
 read_input() {
 
   if type -p mysql_config_editor &>/dev/null; then
-      read -p '请输入--login-path，不输入则需要输入账号密码：' LOGIN_PATH;
+      read -p '请输入--login-path=的值，不输入则需要输入host,port,username,port：' LOGIN_PATH;
       while [ ! -z "$LOGIN_PATH" ] && [ -z `mysql_config_editor print | grep -qE "\[$LOGIN_PATH\]" && echo 1` ]
       do
-        read -p '请输入--login-path，不输入则需要输入host,port,username,port：' LOGIN_PATH;
+        read -p '请输入--login-path的值，不输入则需要输入host,port,username,port：' LOGIN_PATH;
       done
   fi
 
@@ -56,10 +56,7 @@ read_input() {
   }
 
 
-  while [ -z "$DATABASE" ]
-  do
   read -p '请输入database，多个以空格间隔，不填则备份所有库：' DATABASE;
-  done
 
   while [ -z "$DATA_DIR" ]
   do
@@ -86,10 +83,13 @@ exec_cmd() {
   } || {
     LOGIN_PATH="--login-path=$LOGIN_PATH"
   }
-  [ ! -z "$DATABASE" ] && DATABASE="--databases=\"$DATABASE\""
+  [ ! -z "$DATABASE" ] && DATABASE="--databases=mysql sys performance_schema $DATABASE" || DATABASE="--databases="
   echo "xtrabackup $LOGIN_PATH $DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME"
-  xtrabackup $LOGIN_PATH $DATABASE --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
+  # "$DATABASE"要用双引号
+  xtrabackup $LOGIN_PATH "$DATABASE" --datadir=$DATA_DIR  --backup --target-dir=$TARGE_DIR/$BACKUP_DIR_NAME 2>&1 | tee /dev/tty | \
   grep -q "completed OK" && {
+    echo "备份包括以下数据库："
+    ls -l $TARGE_DIR/$BACKUP_DIR_NAME | grep '^d' | awk '{print $9}'
     echo "tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files"
     tar -zcf $TARGE_DIR/$BACKUP_DIR_NAME.tar.gz -C $TARGE_DIR $BACKUP_DIR_NAME --remove-files
   }

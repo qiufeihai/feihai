@@ -17,15 +17,9 @@ check_xtrabackup_install() {
 }
 
 read_input() {
-  while [ -z "$DATA_DIR" ]
-  do
-  read -p '请输入数据目录(默认:/var/lib/mysql)：' DATA_DIR;
-  DATA_DIR=${DATA_DIR:="/var/lib/mysql"}
-  done
-
   while [ -z "$TARGE_DIR" ]
   do
-  read -p '请输入备份保存目录：' TARGE_DIR;
+  read -p '请输入备份目录或备份目录压缩文件：' TARGE_DIR;
   [[ "$TARGE_DIR" == "~"* ]] && {
     echo 不能以~开头;
     TARGE_DIR=
@@ -36,8 +30,11 @@ read_input() {
   }
   done
 
-  BACKUP_DIR_NAME=full-`date '+%Y-%m-%d-%H-%M'`-`uuidgen -t`
-
+  while [ -z "$DATA_DIR" ]
+  do
+  read -p '请输入数据目录(默认:/var/lib/mysql)：' DATA_DIR;
+  DATA_DIR=${DATA_DIR:="/var/lib/mysql"}
+  done
 }
 
 # 如果是压缩文件就解压
