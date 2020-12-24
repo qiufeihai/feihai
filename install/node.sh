@@ -5,14 +5,11 @@ log() {
   echo -e  "\e[1;35m------------------------ $@ ------------------------------\e[0m"
 }
 
-log 下载nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.1/install.sh | bash
+log 安装nvm
+git clone https://github.com/cnpm/nvm.git ~/.nvm && cd ~/.nvm && git checkout `git describe --abbrev=0 --tags`
+echo ". ~/.nvm/nvm.sh" >> /etc/profile
+source /etc/profile
 
-log 引入nvm到zshrc
-echo  'export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"' >> ~/.zshrc
-source $HOME/.zshrc
-nvm -v
 log nvm加速
 export NVM_NODEJS_ORG_MIRROR=https://npm.taobao.org/mirrors/node
 log 安装node
