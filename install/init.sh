@@ -101,3 +101,11 @@ then
     tmux attach -t tmux || tmux new -s tmux
 fi
 EOF
+
+# tmux 设置vi模式
+cat >> ~/.tmux.conf <<EOF
+setw -g mode-keys vi
+bind-key -t vi-copy 'v' begin-selection
+bind-key -t vi-copy 'y' copy-selection
+EOF
+tmux source ~/.tmux.conf > /dev/null 2>&1
