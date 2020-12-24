@@ -32,6 +32,17 @@ sed -e 's!^mirrorlist=!#mirrorlist=!g' \
 sudo yum clean all
 sudo yum makecache
 
+log 重装man pages，处理No manual entry 问题
+[ -e /etc/yum.conf ] && grep -qE 'tsflags=nodocs' /etc/yum.conf && {
+    sudo sed -i '/tsflags=nodocs/d' /etc/yum.conf
+    sudo yum remove -y man-pages man-db
+    sudo yum install -y man-pages man-db
+    # Reinstall all packages to get man pages for them
+    sudo yum -y reinstall "*" && yum clean all 
+} 
+
+
+
 log 安装yum-utils
 sudo yum install -y yum-utils
 
