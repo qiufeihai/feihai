@@ -14,23 +14,41 @@ if ! type -p sudo &>/dev/null; then
     yum install -y sudo
 fi
 
-log 设置中科大yum源
+log 设置清华yum源
 sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
-         -e 's|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g' \
+         -e 's|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.tuna.tsinghua.edu.cn/centos|g' \
          -i.bak \
          /etc/yum.repos.d/CentOS-Base.repo
 log 安装epel源
 sudo yum install -y epel-release
-log epel设置中科大源
-sed -e 's!^mirrorlist=!#mirrorlist=!g' \
-	-e 's!^#baseurl=!baseurl=!g' \
-	-e 's!^metalink!#metalink!g' \
-	-e 's!//download\.fedoraproject\.org/pub!//mirrors.ustc.edu.cn!g' \
-	-e 's!http://mirrors\.ustc!https://mirrors.ustc!g' \
-	-i.bak /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
+log epel设置清华源
+sed -e 's!^metalink=!#metalink=!g' \
+    -e 's!^#baseurl=!baseurl=!g' \
+    -e 's!//download\.fedoraproject\.org/pub!//mirrors.tuna.tsinghua.edu.cn!g' \
+    -e 's!http://mirrors\.tuna!https://mirrors.tuna!g' \
+    -i /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
+
+log 设置网易yum源
+wget http://mirrors.163.com/.help/CentOS7-Base-163.repo -O /etc/yum.repos.d/CentOS7-Base-163.repo
+
+# log 设置中科大yum源
+# sudo sed -e 's|^mirrorlist=|#mirrorlist=|g' \
+#          -e 's|^#baseurl=http://mirror.centos.org/centos|baseurl=https://mirrors.ustc.edu.cn/centos|g' \
+#          -i.bak \
+#          /etc/yum.repos.d/CentOS-Base.repo
+# log 安装epel源
+# sudo yum install -y epel-release
+# log epel设置中科大源
+# sed -e 's!^mirrorlist=!#mirrorlist=!g' \
+# 	-e 's!^#baseurl=!baseurl=!g' \
+# 	-e 's!^metalink!#metalink!g' \
+# 	-e 's!//download\.fedoraproject\.org/pub!//mirrors.ustc.edu.cn!g' \
+# 	-e 's!http://mirrors\.ustc!https://mirrors.ustc!g' \
+# 	-i.bak /etc/yum.repos.d/epel.repo /etc/yum.repos.d/epel-testing.repo
 
 sudo yum clean all
 sudo yum makecache
+
 
 log 重装man pages，处理No manual entry 问题
 [ -e /etc/yum.conf ] && grep -qE 'tsflags=nodocs' /etc/yum.conf && {
