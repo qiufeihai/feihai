@@ -88,6 +88,8 @@ sudo yum install -y lrzsz
 sudo yum install -y psmisc # killall命令
 sudo yum install -y nc
 sudo yum install -y bind-utils # dig命令
+sudo yum install -y ShellCheck
+sudo yum install -y nmap
 
 log 安装常用工具
 sudo yum install -y tmux
