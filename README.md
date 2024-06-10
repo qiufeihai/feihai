@@ -2,26 +2,15 @@
 
 ### Github Hosts
 ```
-# GitHub Start
-52.74.223.119 github.com
-192.30.253.119 gist.github.com
-54.169.195.247 api.github.com
-185.199.111.153 assets-cdn.github.com
-151.101.76.133 raw.githubusercontent.com
-151.101.108.133 user-images.githubusercontent.com
-151.101.76.133 gist.githubusercontent.com
-151.101.76.133 cloud.githubusercontent.com
-151.101.76.133 camo.githubusercontent.com
-151.101.76.133 avatars0.githubusercontent.com
-151.101.76.133 avatars1.githubusercontent.com
-151.101.76.133 avatars2.githubusercontent.com
-151.101.76.133 avatars3.githubusercontent.com
-151.101.76.133 avatars4.githubusercontent.com
-151.101.76.133 avatars5.githubusercontent.com
-151.101.76.133 avatars6.githubusercontent.com
-151.101.76.133 avatars7.githubusercontent.com
-151.101.76.133 avatars8.githubusercontent.com
-# GitHub End
+https://gitlab.com/ineo6/hosts/-/raw/master/next-hosts
+
+https://github.com/ineo6/hosts/blob/master/next-hosts
+```
+
+### Github 加速
+地址前面加：https://hub.gitmirror.com/ 或 https://mirror.ghproxy.com/ ,如：
+```
+https://hub.gitmirror.com/https://raw.githubusercontent.com/xxxxxxxxxxxx
 ```
 
 ### systemctl
@@ -86,6 +75,15 @@ curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker.sh | bas
 bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_mysql.sh)
 # gitee
 bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_mysql.sh)
+
+```
+
+### docker postgresql
+```
+# github
+bash <(curl -o- https://raw.githubusercontent.com/qiufeihai/feihai/master/install/docker_postgresql.sh)
+# gitee
+bash <(curl -o- https://gitee.com/SImMon_Fo4r/feihai/raw/master/install/docker_postgresql.sh)
 
 ```
 
