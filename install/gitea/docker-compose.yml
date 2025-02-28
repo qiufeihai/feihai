@@ -12,9 +12,9 @@ services:
       - USER_UID=1000
       - USER_GID=1000
       - GITEA__database__DB_TYPE=postgres  # 数据库类型
-      - GITEA__database__HOST=172.17.0.1:5432 # 链接地址
+      - GITEA__database__HOST=host.docker.internal:5432 # 链接地址
       - GITEA__database__NAME=gitea # 数据库名
-      - GITEA__database__USER=gitea # 数据库密码
+      - GITEA__database__USER=gitea # 数据库账号
       - GITEA__database__PASSWD=gitea #数据库密码
     restart: always
     networks:
